@@ -1,0 +1,241 @@
+
+.site-header{
+    min-width: 619px;
+    margin-top: 3rem;
+    img{
+        width: 300px;
+    }
+}
+.site-footer{
+    min-width: 619px;
+    .site-info{
+        margin: 4.5rem 0 3rem 0;
+        .footer-navigation{
+            ul{ 
+                list-style: none;
+                margin-left:0;
+                padding-left:0;
+                display: flex;
+                margin: 1rem 0;
+                width: 50%;
+                justify-content: space-between;
+                line-height: 1;
+                li{
+                    &:nth-child(2){
+                        padding: 0 19px;
+                        border-left: 1px solid;
+                        border-right: 1px solid; 
+                    }
+                      
+                    a{
+                        @include green-text;
+                    }
+                }
+            }
+        }
+        p{  
+            font-weight: 300;
+            a{
+                @include green-text;
+            }
+        }
+    }
+
+}
+//home and  single.php
+.home,
+.single-post{
+    @extend %base_typography;
+    .entry-content{
+        font-size:1.25rem;
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+        
+    }
+    .entry-meta{
+        display: flex;
+        align-items: center;
+        margin-bottom: 3rem;
+
+        .entry-title{
+            @extend .entry-content;
+
+            margin: 0;
+
+        }
+        .source{
+            a{
+                @include green-text;
+                font-size:1.25rem;
+                font-style: italic;
+            }
+        }
+    }
+    button{
+        @include green_button;
+    }
+}
+.error404{
+    @extend %base_typography;
+    .clearfix{
+        border:0;
+        padding:0;
+        .search-field{
+            background: $background_color;
+            color: white;
+            border: 2px solid $green_color;
+            width: 240px;
+            padding: 0.25rem 0.5rem;
+            font-family: Exo, sans-serif;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+        .search-submit{
+            background: $background_color;
+            box-shadow: none;
+            border: 0;
+            text-shadow: none;
+            color: $green_color;
+            font-size: 1rem;
+            padding:8px 8px 8px 8px;
+           
+            .fa-search{
+                @include green-text
+            }
+        }
+    }
+}
+
+.search-results{
+    @extend %base_typography;
+    .page-title{
+        border-bottom: 1px dotted #fff;
+        margin-top: 3rem;
+        padding-bottom: 1.5rem;
+    }
+    .type-post{
+        .entry-title{
+            @extend .entry-content;
+            a{
+                @include green-text;
+            }  
+        }
+        .entry-summary{
+                font-weight: 300;    
+        } 
+    }
+    .number-pagination{
+        .page-numbers{
+            @include green-text;
+            padding: 0 .25rem;
+        }
+    }
+}
+
+.archive{
+    @extend .search-results;
+    .status-publish{
+        padding:0 0 3rem 0;
+        border-bottom: 1px dotted #fff;
+        font-size: 1.25rem;
+        font-weight: 300;
+            .entry-title{
+                display: initial;
+                font-weight: 300;
+                padding-bottom: 1.25rem;
+                display: inline;
+                
+                
+            }
+            .source{
+                font-size: 1.25rem;
+                font-style: italic;
+                font-weight: 300;
+                a{
+                    @include green-text;
+                }
+            }
+    }
+    .entry-title{
+        font-size: 1.25rem;
+    }
+   
+}
+
+
+//about page & archives & submit form
+.page-template-default{
+    @extend %base_typography;
+    .entry-title{
+        margin-top: 3rem;
+    }
+    .entry-content{
+        a{
+            @include green-text;
+        }
+    }
+    
+    .clearfix{
+        ul,
+        .wp-tag-cloud {
+            list-style: none;
+            margin-left:0;
+            padding-left:0;
+            display: flex;
+           flex-wrap: wrap;
+           margin-left: 0;
+           padding-left: 0;
+           li{
+            padding: 0 10px 5px 0;
+            .tag-cloud-link,
+                a{
+                    @include green_text;
+                    font-size: 1.25rem !important;
+                    
+                }
+            }
+          
+          
+        }
+    }
+    p{
+       a{
+        @include green_text;
+       } 
+    }
+
+}
+
+.admin-bar{
+    #quote-submission-form{
+        div{
+            display:flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+            label{
+                margin-bottom: 1rem;
+                font-weight: 300;
+            }
+            input{
+                @include green_button;
+                color: white;
+                font-weight: 300;
+                font-family: Exo,sans-serif;
+                padding: .25rem .5rem;
+                width: 240px;
+            }
+            #quote-content{
+                @extend input;
+                width:100%;
+            }
+        }
+        .submit-button{
+            @include green_button;
+        }
+
+
+        
+    }
+
+}
+

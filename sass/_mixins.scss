@@ -4,3 +4,51 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+//______________________________________________
+
+
+@mixin tablet{
+	@media screen and (min-width: $tablet-width){
+		@content;
+	}	
+	
+}
+
+@mixin desktop{
+	@media screen and (min-width: $desktop-width){
+		@content;
+	}
+}
+
+
+@mixin green-text{
+	text-decoration: none;
+	color:$green_color;
+	font-weight: lighter;
+
+	&:hover{
+		color:$dark_green;
+	}
+}
+@mixin green_button{
+	background-color: #222;
+    border: 2px solid #0c0;
+    border-radius: 3px;
+    color: #0c0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: .75rem 2.25rem;
+    box-shadow: none;
+    text-shadow: none;
+}
+@mixin ul_element{
+	list-style: none;
+	margin-left:0;
+	padding-left:0;
+	display: flex;
+	margin: 1rem 0;
+	width: 50%;
+	justify-content: space-between;
+	line-height: 1;
+}

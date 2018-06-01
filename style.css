@@ -39,6 +39,17 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## All Archives Page
 	## Submit a Quote Page
 --------------------------------------------------------------*/
+.home,
+.single-post, .error404, .search-results, .archive, .page-template-default {
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 1.5;
+  font-family: Exo, sans-serif;
+  background-color: #222222;
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 2.5%; }
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -143,6 +154,7 @@ samp {
 
 button,
 input,
+.admin-bar #quote-submission-form div #quote-content,
 optgroup,
 select,
 textarea {
@@ -159,40 +171,52 @@ select {
 
 button,
 html input[type="button"],
+html .admin-bar #quote-submission-form div #quote-content[type="button"],
+.admin-bar #quote-submission-form div html #quote-content[type="button"],
 input[type="reset"],
-input[type="submit"] {
+.admin-bar #quote-submission-form div #quote-content[type="reset"],
+input[type="submit"],
+.admin-bar #quote-submission-form div #quote-content[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer; }
 
 button[disabled],
-html input[disabled] {
+html input[disabled],
+html .admin-bar #quote-submission-form div #quote-content[disabled],
+.admin-bar #quote-submission-form div html #quote-content[disabled] {
   cursor: default; }
 
 button::-moz-focus-inner,
-input::-moz-focus-inner {
+input::-moz-focus-inner,
+.admin-bar #quote-submission-form div #quote-content::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
-input {
+
+input,
+.admin-bar #quote-submission-form div #quote-content {
   line-height: normal; }
 
-input[type="checkbox"],
-input[type="radio"] {
+input[type="checkbox"], .admin-bar #quote-submission-form div #quote-content[type="checkbox"],
+input[type="radio"],
+.admin-bar #quote-submission-form div #quote-content[type="radio"] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0; }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button, .admin-bar #quote-submission-form div #quote-content[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+.admin-bar #quote-submission-form div #quote-content[type="number"]::-webkit-outer-spin-button {
   height: auto; }
 
-input[type="search"] {
+input[type="search"], .admin-bar #quote-submission-form div #quote-content[type="search"] {
   -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
           box-sizing: content-box; }
 
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+input[type="search"]::-webkit-search-cancel-button, .admin-bar #quote-submission-form div #quote-content[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration,
+.admin-bar #quote-submission-form div #quote-content[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
 
 fieldset {
@@ -221,12 +245,41 @@ th {
 /*--------------------------------------------------------------
 # Embedded Fonts
 --------------------------------------------------------------*/
+@font-face {
+  font-family: 'Exo';
+  src: url("../../fonts/Exo-Medium.eot");
+  src: url("../../fonts/Exo-Medium.eot?#iefix") format("embedded-opentype"), url("../../fonts/Exo-Medium.woff2") format("woff2"), url("../../fonts/Exo-Medium.woff") format("woff"), url("../../fonts/Exo-Medium.ttf") format("truetype"), url("../../fonts/Exo-Medium.svg#Exo-Medium") format("svg");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Exo';
+  src: url("../../fonts/Exo-LightItalic.eot");
+  src: url("../../fonts/Exo-LightItalic.eot?#iefix") format("embedded-opentype"), url("../../fonts/Exo-LightItalic.woff2") format("woff2"), url("../../fonts/Exo-LightItalic.woff") format("woff"), url("../../fonts/Exo-LightItalic.ttf") format("truetype"), url("../../fonts/Exo-LightItalic.svg#Exo-LightItalic") format("svg");
+  font-weight: 300;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Exo';
+  src: url("../../fonts/Exo-MediumItalic.eot");
+  src: url("../../fonts/Exo-MediumItalic.eot?#iefix") format("embedded-opentype"), url("../../fonts/Exo-MediumItalic.woff2") format("woff2"), url("../../fonts/Exo-MediumItalic.woff") format("woff"), url("../../fonts/Exo-MediumItalic.ttf") format("truetype"), url("../../fonts/Exo-MediumItalic.svg#Exo-MediumItalic") format("svg");
+  font-weight: 500;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Exo';
+  src: url("../../fonts/Exo-Light.eot");
+  src: url("../../fonts/Exo-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/Exo-Light.woff2") format("woff2"), url("../../fonts/Exo-Light.woff") format("woff"), url("../../fonts/Exo-Light.ttf") format("truetype"), url("../../fonts/Exo-Light.svg#Exo-Light") format("svg");
+  font-weight: 300;
+  font-style: normal; }
+
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
 body,
 button,
 input,
+.admin-bar #quote-submission-form div #quote-content,
 select,
 textarea {
   color: #404040;
@@ -336,14 +389,20 @@ table {
   margin: 0 0 1.5rem;
   width: 100%; }
 
+h2 {
+  font-family: Exo; }
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
 /* Buttons */
 button,
 input[type="button"],
+.admin-bar #quote-submission-form div #quote-content[type="button"],
 input[type="reset"],
-input[type="submit"] {
+.admin-bar #quote-submission-form div #quote-content[type="reset"],
+input[type="submit"],
+.admin-bar #quote-submission-form div #quote-content[type="submit"] {
   border: 1px solid;
   border-color: #ccc #ccc #bbb;
   border-radius: 3px;
@@ -357,45 +416,62 @@ input[type="submit"] {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); }
   button:hover,
   input[type="button"]:hover,
+  .admin-bar #quote-submission-form div #quote-content[type="button"]:hover,
   input[type="reset"]:hover,
-  input[type="submit"]:hover {
+  .admin-bar #quote-submission-form div #quote-content[type="reset"]:hover,
+  input[type="submit"]:hover,
+  .admin-bar #quote-submission-form div #quote-content[type="submit"]:hover {
     border-color: #ccc #bbb #aaa;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02); }
   button:active, button:focus,
   input[type="button"]:active,
+  .admin-bar #quote-submission-form div #quote-content[type="button"]:active,
   input[type="button"]:focus,
+  .admin-bar #quote-submission-form div #quote-content[type="button"]:focus,
   input[type="reset"]:active,
+  .admin-bar #quote-submission-form div #quote-content[type="reset"]:active,
   input[type="reset"]:focus,
+  .admin-bar #quote-submission-form div #quote-content[type="reset"]:focus,
   input[type="submit"]:active,
-  input[type="submit"]:focus {
+  .admin-bar #quote-submission-form div #quote-content[type="submit"]:active,
+  input[type="submit"]:focus,
+  .admin-bar #quote-submission-form div #quote-content[type="submit"]:focus {
     border-color: #aaa #bbb #bbb;
     -webkit-box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
             box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15); }
 
 /* Fields */
-input[type="text"],
+input[type="text"], .admin-bar #quote-submission-form div #quote-content[type="text"],
 input[type="email"],
+.admin-bar #quote-submission-form div #quote-content[type="email"],
 input[type="url"],
+.admin-bar #quote-submission-form div #quote-content[type="url"],
 input[type="password"],
-input[type="search"],
+.admin-bar #quote-submission-form div #quote-content[type="password"], input[type="search"], .admin-bar #quote-submission-form div #quote-content[type="search"],
 textarea {
   color: #666;
   border: 1px solid #ccc;
   border-radius: 3px; }
-  input[type="text"]:focus,
+  input[type="text"]:focus, .admin-bar #quote-submission-form div #quote-content[type="text"]:focus,
   input[type="email"]:focus,
+  .admin-bar #quote-submission-form div #quote-content[type="email"]:focus,
   input[type="url"]:focus,
+  .admin-bar #quote-submission-form div #quote-content[type="url"]:focus,
   input[type="password"]:focus,
+  .admin-bar #quote-submission-form div #quote-content[type="password"]:focus,
   input[type="search"]:focus,
+  .admin-bar #quote-submission-form div #quote-content[type="search"]:focus,
   textarea:focus {
     color: #111; }
 
-input[type="text"],
+input[type="text"], .admin-bar #quote-submission-form div #quote-content[type="text"],
 input[type="email"],
+.admin-bar #quote-submission-form div #quote-content[type="email"],
 input[type="url"],
+.admin-bar #quote-submission-form div #quote-content[type="url"],
 input[type="password"],
-input[type="search"] {
+.admin-bar #quote-submission-form div #quote-content[type="password"], input[type="search"], .admin-bar #quote-submission-form div #quote-content[type="search"] {
   padding: 3px; }
 
 textarea {
@@ -560,6 +636,10 @@ a {
 
 .page-content,
 .entry-content,
+.home .entry-meta .entry-title,
+.single-post .entry-meta .entry-title,
+.search-results .type-post .entry-title,
+.archive .type-post .entry-title,
 .entry-summary {
   margin: 1.5rem 0 0; }
 
@@ -572,6 +652,10 @@ a {
 --------------------------------------------------------------*/
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
+.home .entry-meta .entry-title .wp-smiley,
+.single-post .entry-meta .entry-title .wp-smiley,
+.search-results .type-post .entry-title .wp-smiley,
+.archive .type-post .entry-title .wp-smiley,
 .comment-content .wp-smiley {
   border: none;
   margin-bottom: 0;
@@ -589,3 +673,259 @@ object {
 --------------------------------------------------------------*/
 /* All Archives Page */
 /* Submit a Quote Page */
+.site-header {
+  min-width: 619px;
+  margin-top: 3rem; }
+  .site-header img {
+    width: 300px; }
+
+.site-footer {
+  min-width: 619px; }
+  .site-footer .site-info {
+    margin: 4.5rem 0 3rem 0; }
+    .site-footer .site-info .footer-navigation ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 1rem 0;
+      width: 50%;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      line-height: 1; }
+      .site-footer .site-info .footer-navigation ul li:nth-child(2) {
+        padding: 0 19px;
+        border-left: 1px solid;
+        border-right: 1px solid; }
+      .site-footer .site-info .footer-navigation ul li a {
+        text-decoration: none;
+        color: #00cc00;
+        font-weight: lighter; }
+        .site-footer .site-info .footer-navigation ul li a:hover {
+          color: #1dac1d; }
+    .site-footer .site-info p {
+      font-weight: 300; }
+      .site-footer .site-info p a {
+        text-decoration: none;
+        color: #00cc00;
+        font-weight: lighter; }
+        .site-footer .site-info p a:hover {
+          color: #1dac1d; }
+
+.home .entry-content, .home .entry-meta .entry-title, .single-post .entry-meta .home .entry-title, .home .search-results .type-post .entry-title, .search-results .type-post .home .entry-title, .home .archive .type-post .entry-title, .archive .type-post .home .entry-title,
+.single-post .entry-content,
+.home .entry-meta .single-post .entry-title,
+.single-post .entry-meta .entry-title,
+.single-post .search-results .type-post .entry-title,
+.search-results .type-post .single-post .entry-title,
+.single-post .archive .type-post .entry-title,
+.archive .type-post .single-post .entry-title {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem; }
+
+.home .entry-meta,
+.single-post .entry-meta {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 3rem; }
+  .home .entry-meta .entry-title,
+  .single-post .entry-meta .entry-title {
+    margin: 0; }
+  .home .entry-meta .source a,
+  .single-post .entry-meta .source a {
+    text-decoration: none;
+    color: #00cc00;
+    font-weight: lighter;
+    font-size: 1.25rem;
+    font-style: italic; }
+    .home .entry-meta .source a:hover,
+    .single-post .entry-meta .source a:hover {
+      color: #1dac1d; }
+
+.home button,
+.single-post button {
+  background-color: #222;
+  border: 2px solid #0c0;
+  border-radius: 3px;
+  color: #0c0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: .75rem 2.25rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  text-shadow: none; }
+
+.error404 .clearfix {
+  border: 0;
+  padding: 0; }
+  .error404 .clearfix .search-field {
+    background: #222222;
+    color: white;
+    border: 2px solid #00cc00;
+    width: 240px;
+    padding: 0.25rem 0.5rem;
+    font-family: Exo, sans-serif;
+    font-weight: 300;
+    margin-bottom: 1.5rem; }
+  .error404 .clearfix .search-submit {
+    background: #222222;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border: 0;
+    text-shadow: none;
+    color: #00cc00;
+    font-size: 1rem;
+    padding: 8px 8px 8px 8px; }
+    .error404 .clearfix .search-submit .fa-search {
+      text-decoration: none;
+      color: #00cc00;
+      font-weight: lighter; }
+      .error404 .clearfix .search-submit .fa-search:hover {
+        color: #1dac1d; }
+
+.search-results .page-title, .archive .page-title {
+  border-bottom: 1px dotted #fff;
+  margin-top: 3rem;
+  padding-bottom: 1.5rem; }
+
+.search-results .type-post .entry-title a, .archive .type-post .entry-title a {
+  text-decoration: none;
+  color: #00cc00;
+  font-weight: lighter; }
+  .search-results .type-post .entry-title a:hover, .archive .type-post .entry-title a:hover {
+    color: #1dac1d; }
+
+.search-results .type-post .entry-summary, .archive .type-post .entry-summary {
+  font-weight: 300; }
+
+.search-results .number-pagination .page-numbers, .archive .number-pagination .page-numbers {
+  text-decoration: none;
+  color: #00cc00;
+  font-weight: lighter;
+  padding: 0 .25rem; }
+  .search-results .number-pagination .page-numbers:hover, .archive .number-pagination .page-numbers:hover {
+    color: #1dac1d; }
+
+.archive .status-publish {
+  padding: 0 0 3rem 0;
+  border-bottom: 1px dotted #fff;
+  font-size: 1.25rem;
+  font-weight: 300; }
+  .archive .status-publish .entry-title {
+    display: initial;
+    font-weight: 300;
+    padding-bottom: 1.25rem;
+    display: inline; }
+  .archive .status-publish .source {
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 300; }
+    .archive .status-publish .source a {
+      text-decoration: none;
+      color: #00cc00;
+      font-weight: lighter; }
+      .archive .status-publish .source a:hover {
+        color: #1dac1d; }
+
+.archive .entry-title {
+  font-size: 1.25rem; }
+
+.page-template-default .entry-title {
+  margin-top: 3rem; }
+
+.page-template-default .entry-content a, .page-template-default .home .entry-meta .entry-title a, .home .entry-meta .page-template-default .entry-title a, .page-template-default .single-post .entry-meta .entry-title a, .single-post .entry-meta .page-template-default .entry-title a, .page-template-default .search-results .type-post .entry-title a, .search-results .type-post .page-template-default .entry-title a, .page-template-default .archive .type-post .entry-title a, .archive .type-post .page-template-default .entry-title a {
+  text-decoration: none;
+  color: #00cc00;
+  font-weight: lighter; }
+  .page-template-default .entry-content a:hover, .page-template-default .home .entry-meta .entry-title a:hover, .home .entry-meta .page-template-default .entry-title a:hover, .page-template-default .single-post .entry-meta .entry-title a:hover, .single-post .entry-meta .page-template-default .entry-title a:hover, .page-template-default .search-results .type-post .entry-title a:hover, .search-results .type-post .page-template-default .entry-title a:hover, .page-template-default .archive .type-post .entry-title a:hover, .archive .type-post .page-template-default .entry-title a:hover {
+    color: #1dac1d; }
+
+.page-template-default .clearfix ul,
+.page-template-default .clearfix .wp-tag-cloud {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-left: 0;
+  padding-left: 0; }
+  .page-template-default .clearfix ul li,
+  .page-template-default .clearfix .wp-tag-cloud li {
+    padding: 0 10px 5px 0; }
+    .page-template-default .clearfix ul li .tag-cloud-link,
+    .page-template-default .clearfix ul li a,
+    .page-template-default .clearfix .wp-tag-cloud li .tag-cloud-link,
+    .page-template-default .clearfix .wp-tag-cloud li a {
+      text-decoration: none;
+      color: #00cc00;
+      font-weight: lighter;
+      font-size: 1.25rem !important; }
+      .page-template-default .clearfix ul li .tag-cloud-link:hover,
+      .page-template-default .clearfix ul li a:hover,
+      .page-template-default .clearfix .wp-tag-cloud li .tag-cloud-link:hover,
+      .page-template-default .clearfix .wp-tag-cloud li a:hover {
+        color: #1dac1d; }
+
+.page-template-default p a {
+  text-decoration: none;
+  color: #00cc00;
+  font-weight: lighter; }
+  .page-template-default p a:hover {
+    color: #1dac1d; }
+
+.admin-bar #quote-submission-form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 2rem; }
+  .admin-bar #quote-submission-form div label {
+    margin-bottom: 1rem;
+    font-weight: 300; }
+  .admin-bar #quote-submission-form div input, .admin-bar #quote-submission-form div #quote-content {
+    background-color: #222;
+    border: 2px solid #0c0;
+    border-radius: 3px;
+    color: #0c0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: .75rem 2.25rem;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    text-shadow: none;
+    color: white;
+    font-weight: 300;
+    font-family: Exo,sans-serif;
+    padding: .25rem .5rem;
+    width: 240px; }
+  .admin-bar #quote-submission-form div #quote-content {
+    width: 100%; }
+
+.admin-bar #quote-submission-form .submit-button {
+  background-color: #222;
+  border: 2px solid #0c0;
+  border-radius: 3px;
+  color: #0c0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: .75rem 2.25rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  text-shadow: none; }

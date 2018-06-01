@@ -26,3 +26,27 @@ $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 $font__line-height-body: 1.5;
 $font__line-height-pre: 1.6;
+
+
+//----------------------------------------------------------------------------------------
+$tablet_width: 620px;
+$desktop_width: 1080px;
+$dashed_border: 1px dashed #ffffff;
+
+$background_color: #222222;
+$green_color:#00cc00;
+$dark_green:#1dac1d;
+
+%base_typography{
+    font-size: 16px;
+    color:#ffffff;
+    line-height: 1.5;
+    font-family: Exo, sans-serif;
+    background-color: $background_color;
+    margin: 0 auto;
+    max-width: 1080px;
+    padding: 2.5%;
+}
+
+
+

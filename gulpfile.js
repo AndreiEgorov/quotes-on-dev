@@ -12,7 +12,7 @@ const browserSync = require('browser-sync');
 
 gulp.task('sass', function () {
     return gulp
-        .src('./sass/style.scss', {sourcemaps: true})
+        .src('./sass/style.scss', { sourcemaps: true })
         .pipe(prettyError())
         .pipe(sass())
         .pipe(
@@ -61,7 +61,7 @@ gulp.task('browser-sync', function () {
     ];
 
     browserSync.init(files, {
-        proxy: 'localhost[:port-here]/[your-dir-name-here]'
+        proxy: 'localhost:8888/qod'
     });
 
     gulp.watch(files).on('change', browserSync.reload);
