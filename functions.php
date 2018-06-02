@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package QOD_Starter_Theme
+ * @package QOD_Complete_Theme
  */
 
 if ( ! function_exists( 'qod_setup' ) ) :

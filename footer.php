@@ -2,7 +2,7 @@
 /**
  * The template for displaying the footer.
  *
- * @package QOD_Starter_Theme
+ * @package QOD_Complete_Theme
  */
 
  ?>
@@ -20,7 +20,7 @@
 						 	) 
 						); 
 					?>
-					<p>Brought to you by <a href="http://www.redacademy.com/">RED Academy</a></p>	
+					<p>Brought to you by <a href="http://www.redacademy.com/">Andrei Egorov</a></p>	
 				</div><!-- .site-info -->
 			</footer><!-- #colophon -->
 		</div><!-- #page -->

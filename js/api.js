@@ -1,95 +1,120 @@
-(function ($) {
-  'use strict';
+$(document).ready(function () {
 
 
-  /**
-   * Ajax-based random post fetching & History API
-   */
 
-  var lastPage = "";
+  (function ($) {
+    'use strict';
 
 
-  $('#new-quote-button').on('click', function (event) {
-    event.preventDefault();
+    /**
+     * Ajax-based random post fetching & History API
+     */
 
-    lastPage = document.URL;
-
-
-    $.ajax({
-      method: 'get',
-      url: api_vars.root_url + 'wp/v2/posts?filter[orderby]=rand&filter[posts_per_page]=1',
-      cache: false,
-    }).done(function (data) {
-
-      history.pushState(null, null, data[0].slug);
+    var lastPage = "";
 
 
-      $('.entry-content').html(data[0].content.rendered);
-      $('.entry-title').html(data[0].title.rendered);
-      $('.source').html(data[0]._qod_quote_source);
+    $('#new-quote-button').on('click', function (event) {
+      event.preventDefault();
+
+      lastPage = document.URL;
 
 
-      //append dat to html, look at content.php
+      $.ajax({
+        method: 'get',
+        url: api_vars.root_url + 'wp/v2/posts?filter[orderby]=rand&filter[posts_per_page]=1',
+        cache: false,
+      }).done(function (data) {
 
-    }).fail(function () {
-      //some message for the user sying there was an error
+        history.pushState(null, null, data[0].slug);
+
+
+
+        var postObj = data[0];
+        var postTitle = '&mdash; ' + postObj.title.rendered;
+
+
+
+        // var postContent =
+        console.log(data);
+
+        var quoteSrc = postObj._qod_quote_source;
+        var quoteSrcComma = ' ,' + postObj._qod_quote_source;
+        var quoteSrcUrl = postObj._qod_quote_source_url;
+        var quoteSrcHtml = ', <a href="' + quoteSrcUrl + '">' + quoteSrc + '</a>';
+
+        $('.entry-title').html(postTitle);
+        $('.source').html(quoteSrc);
+
+        if (quoteSrc.length > 0) {
+          $('.source').empty();
+          $('.source').html(quoteSrcComma);
+
+          if (quoteSrcUrl.length > 0) {
+            $('.source').empty();
+            $(".source").html(quoteSrcHtml);
+          }
+        }
+
+        $('.entry-content').html(data[0].content.rendered);
+        //append dat to html, look at content.php
+
+      }).fail(function () {
+        //some message for the user sying there was an error
+
+      });
 
     });
 
-  });
-
-  $(window).on('popstate', function () {
-    window.location.replace(lastPage);
-  });
-
-
-
-
-
-
-
-
-
-
-  /**
-   * Ajax-based front-end post submissions.
-   */
-
-  $('#quote-submission-form').on('submit', function (event) {
-
-    event.preventDefault();
-    var author = $('#quote-author').val();
-    var quote = $('#quote-content').val();
-    var source = $('#quote-source').val();
-    var url = $('#quote-source-url').val();
-
-    $.ajax({
-      method: 'post',
-      url: api_vars.root_url + 'wp/v2/posts',
-      data: {
-        status: "draft",
-        title: quote,
-        content: author,
-        _qod_quote_source: source,
-        _qod_quote_source_url: url,
-
-      },
-      beforeSend: function (xhr) {
-        xhr.setRequestHeader('X-WP-Nonce', api_vars.nonce);
-      }
-    }).done(function () {
-      alert(api_vars.success);
-    }).fail(function () {
-      alert(api_vars.failure);
+    $(window).on('popstate', function () {
+      window.location.replace(lastPage);
     });
 
-  });
+    /**
+     * Ajax-based front-end post submissions.
+     */
+
+    $('#quote-submission-form').on('submit', function (event) {
+
+      event.preventDefault();
+      var author = $('#quote-author').val();
+      var quote = $('#quote-content').val();
+      var source = $('#quote-source').val();
+      var url = $('#quote-source-url').val();
+
+      $.ajax({
+        method: 'post',
+        url: api_vars.root_url + 'wp/v2/posts',
+        data: {
+          status: "pending",
+          title: quote,
+          content: author,
+          _qod_quote_source: source,
+          _qod_quote_source_url: url,
+
+        },
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-WP-Nonce', api_vars.nonce);
+        }
+      }).done(function () {
+
+        $('#quote-submission-form').slideUp('slow', function () {
+          $('.submit-success-message').css("display", "block").html(api_vars.success);
+        })
 
 
 
-  //see slides wp javascript slides fo r post request
-  //also in the redsprouit theme
+        // alert(api_vars.success);
+      }).fail(function () {
+        alert(api_vars.failure);
+      });
 
-})(jQuery);
+    });
 
 
+
+    //see slides wp javascript slides fo r post request
+    //also in the redsprouit theme
+
+  })(jQuery);
+
+});

@@ -2,7 +2,7 @@
 /**
  * The main template file.
  *
- * @package QOD_Starter_Theme
+ * @package QOD_Complete_Theme
  */
 
 get_header(); ?>

@@ -40,7 +40,18 @@
     line-height: 1;
     padding: .75rem 2.25rem;
     box-shadow: none;
-    text-shadow: none;
+	text-shadow: none;
+	font-family: Exo, sans-serif;
+	@include green-text;
+	&:hover{
+		border-color:$dark_green;
+	}
+
+	@include tablet{
+		font-size: 1.25rem;
+		
+	}
+
 }
 @mixin ul_element{
 	list-style: none;
@@ -51,4 +62,25 @@
 	width: 50%;
 	justify-content: space-between;
 	line-height: 1;
+}
+@mixin left-quote{
+	content:"\f10d";
+	color: #0c0;
+	font-family: 'FontAwesome';
+	font-size: 125px;
+	line-height: 125px;
+	position: absolute;
+	top: 0;
+	right: 45.4rem;
+}
+@mixin right-quote{
+	content:"\f10e";
+	color: #0c0;
+	font-family: 'FontAwesome';
+	font-size: 125px;
+	line-height: 125px;
+	position: absolute;
+	top: 0;
+	left: 45.4rem;
+
 }
