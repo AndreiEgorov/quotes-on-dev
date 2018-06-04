@@ -8,6 +8,8 @@ $(document).ready(function () {
     $('#new-quote-button').on('click', function (event) {
       event.preventDefault();
 
+      lastPage = document.URL;
+
       $.ajax({
         method: 'GET',
         url: api_vars.root_url + 'wp/v2/posts?filter[orderby]=rand&filter[posts_per_page]=1',
@@ -20,6 +22,9 @@ $(document).ready(function () {
         var quoteSrcComma = ' ,' + postObj._qod_quote_source;
         var quoteSrcUrl = postObj._qod_quote_source_url;
         var quoteSrcHtml = ', <a href="' + quoteSrcUrl + '">' + quoteSrc + '</a>';
+
+        var quoteUrl = api_vars.home_url + '/' + data[0].slug;
+
         $('.entry-title').html(postTitle);
 
         $('.source').html(quoteSrc);
@@ -32,12 +37,13 @@ $(document).ready(function () {
           }
         }
         $('.entry-content').html(data[0].content.rendered);
-        lastPage = document.URL;
-        history.pushState(null, null, data[0].slug);
+
+        history.pushState(null, null, quoteUrl);
       }).fail(function () {
         alert("An unexpected error occured. Please, try again later.")
       });
     });
+
     /**
      * Ajax-based front-end post submissions.
      */
