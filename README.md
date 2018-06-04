@@ -1,4 +1,4 @@
-# quotes-on-dev
+# Quotes-on-Dev
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
@@ -6,34 +6,31 @@
 
 ## Table of Contents
 
-- [Background](#background)
-- [Install](#install)
-- [Usage](#usage)
+- [Technologies Used](#Technologies Used)
+- [Learnings](#Learnings)
 - [Maintainers](#maintainers)
-- [Contribute](#contribute)
 - [License](#license)
 
-## Background
+## Technologies Used
+Wordpress CMS
+PHP
+JavaScript 
+Sass
+Gulp
 
-## Install
+## Learnings
 
-```
+```REST API,POST - Post is a method that can be sent to an api. It allows a user to submit information to the server. In case of QoD, the user can submit a quote to the server and the quote will be stored with the status "pending" until approved for publishing or deleted by an administrator
+
+```Nonce - number used once. It is a set of numbers and letters used for user verification perposes to ensure that a certain tasks can only be performed by an authorized user.
 ```
 
-## Usage
-
-```
-```
 
 ## Maintainers
 
 [@https://github.com/AndreiEgorov](https://github.com/https://github.com/AndreiEgorov)
 
-## Contribute
 
-
-
-Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
 ## License
 
