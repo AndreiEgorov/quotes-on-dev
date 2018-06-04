@@ -1,6 +1,5 @@
 # Quotes-on-Dev
 
-[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 > Quotes on Dev is a web application that displays various quotes as well as the quotes authors and sources. With this application users can also submit a new quote as long as signed in. Once a quote is submitted it is reviewed by an administrator and may be approved for publication.
 
