@@ -1,86 +1,52 @@
 $(document).ready(function () {
-
-
-
   (function ($) {
     'use strict';
-
-
     /**
      * Ajax-based random post fetching & History API
      */
-
-    var lastPage = "";
-
-
+    var lastPage = " ";
     $('#new-quote-button').on('click', function (event) {
       event.preventDefault();
 
-      lastPage = document.URL;
-
-
       $.ajax({
-        method: 'get',
+        method: 'GET',
         url: api_vars.root_url + 'wp/v2/posts?filter[orderby]=rand&filter[posts_per_page]=1',
         cache: false,
       }).done(function (data) {
 
-        history.pushState(null, null, data[0].slug);
-
-
-
         var postObj = data[0];
         var postTitle = '&mdash; ' + postObj.title.rendered;
-
-
-
-        // var postContent =
-        console.log(data);
-
         var quoteSrc = postObj._qod_quote_source;
         var quoteSrcComma = ' ,' + postObj._qod_quote_source;
         var quoteSrcUrl = postObj._qod_quote_source_url;
         var quoteSrcHtml = ', <a href="' + quoteSrcUrl + '">' + quoteSrc + '</a>';
-
         $('.entry-title').html(postTitle);
-        $('.source').html(quoteSrc);
 
+        $('.source').html(quoteSrc);
         if (quoteSrc.length > 0) {
           $('.source').empty();
           $('.source').html(quoteSrcComma);
-
           if (quoteSrcUrl.length > 0) {
             $('.source').empty();
             $(".source").html(quoteSrcHtml);
           }
         }
-
         $('.entry-content').html(data[0].content.rendered);
-        //append dat to html, look at content.php
-
+        lastPage = document.URL;
+        history.pushState(null, null, data[0].slug);
       }).fail(function () {
-        //some message for the user sying there was an error
-
+        alert("An unexpected error occured. Please, try again later.")
       });
-
     });
-
-    $(window).on('popstate', function () {
-      window.location.replace(lastPage);
-    });
-
     /**
      * Ajax-based front-end post submissions.
      */
-
     $('#quote-submission-form').on('submit', function (event) {
-
       event.preventDefault();
       var author = $('#quote-author').val();
       var quote = $('#quote-content').val();
       var source = $('#quote-source').val();
       var url = $('#quote-source-url').val();
-
       $.ajax({
         method: 'post',
         url: api_vars.root_url + 'wp/v2/posts',
@@ -90,31 +56,22 @@ $(document).ready(function () {
           content: author,
           _qod_quote_source: source,
           _qod_quote_source_url: url,
-
         },
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-WP-Nonce', api_vars.nonce);
         }
       }).done(function () {
-
         $('#quote-submission-form').slideUp('slow', function () {
           $('.submit-success-message').css("display", "block").html(api_vars.success);
         })
-
-
-
-        // alert(api_vars.success);
       }).fail(function () {
         alert(api_vars.failure);
       });
 
     });
 
-
-
-    //see slides wp javascript slides fo r post request
-    //also in the redsprouit theme
-
+    $(window).on('popstate', function () {
+      window.location.replace(lastPage);
+    });
   })(jQuery);
-
 });

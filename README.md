@@ -1,23 +1,40 @@
-# Quotes on Dev Starter
+# quotes-on-dev
 
-A WordPress starter theme for the Quotes on Dev project, forked from Underscores.
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-## Installation
+> Quotes on Dev is a web application that displays various quotes as well as the author of a quote and a source of the quote. The application also allows submitting a new quote all users that are signed in. Once a quote is submitted it is reviewed by an administrator and may be approved for publication. For developing QOD, the following technologies were mainly  used: Wordpress CMS, PHP, JavaScript, Sass.
 
-### 1. Download me (don't clone me!)
+## Table of Contents
 
-Then add me to your `wp-content/themes` directory.
+- [Background](#background)
+- [Install](#install)
+- [Usage](#usage)
+- [Maintainers](#maintainers)
+- [Contribute](#contribute)
+- [License](#license)
 
-### 2. Rename the `quotesondev-starter-master` directory
+## Background
 
-Make sure that the theme directory name is project appropriate! Do you need `starter` or `master` in the directory name?
+## Install
 
-### 3. Install the dev dependencies
+```
+```
 
-Next you'll need to run `npm install` **inside your theme directory** to install the npm packages you'll need for Gulp, etc.
+## Usage
 
-### 4. Update the proxy in `gulpfile.js`
+```
+```
 
-Lastly, be sure to update your `gulpfile.js` with the appropriate URL for the Browsersync proxy (so change `localhost[:port-here]/[your-dir-name-here]` to the appropriate localhost URL).
+## Maintainers
 
-And now would be a good time to `git init` :)
+[@https://github.com/AndreiEgorov](https://github.com/https://github.com/AndreiEgorov)
+
+## Contribute
+
+
+
+Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
+
+## License
+
+MIT © 2018 Andrei Egorov
